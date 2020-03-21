@@ -1,0 +1,7 @@
+{
+  "name": "eat-away",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
