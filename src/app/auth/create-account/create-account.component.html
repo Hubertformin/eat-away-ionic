@@ -1,0 +1,76 @@
+<ion-header>
+  <section id="toolbar" style="border-radius: 0;" class="ion-padding">
+    <div class="title-box">
+      <h4 class="title-text font-pacifico">{{appName}}</h4>
+      <!--      <span class="icon"><ion-icon name="notifications"></ion-icon></span>-->
+    </div>
+    <div class="flex justify-between">
+      <h3 class="mt-3 font-bold">Create Account</h3>
+    </div>
+  </section>
+</ion-header>
+<ion-content>
+  <section class="w-full relative h-full">
+    <div [formGroup]="accountForm" class="">
+      <div class="w-full">
+        <section class="pt-3">
+          <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input formControlName="name" placeholder="Name"></ion-input>
+            <small *ngIf="accountForm.get('name').invalid
+            && (accountForm.get('name').touched || accountForm.get('name').dirty)"
+                   class="text-red">Please insert a valid name</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Phone</ion-label>
+            <ion-input formControlName="phoneNumber" placeholder="Phone Number" type="tel"></ion-input>
+            <small *ngIf="accountForm.get('phoneNumber').invalid
+            && (accountForm.get('phoneNumber').touched || accountForm.get('phoneNumber').dirty)"
+                   class="text-red">Please insert a valid number</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+            <small *ngIf="accountForm.get('email').invalid
+            && (accountForm.get('email').touched || accountForm.get('email').dirty)"
+                   class="text-red">Please insert a valid email</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Date of birth</ion-label>
+            <ion-input formControlName="dateOfBirth" type="date" placeholder="Date"></ion-input>
+            <small *ngIf="accountForm.get('dateOfBirth').invalid
+            && (accountForm.get('dateOfBirth').touched || accountForm.get('dateOfBirth').dirty)"
+                   class="text-red">Please specify your date of birth</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">New Password</ion-label>
+            <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+            <small *ngIf="accountForm.get('password').invalid
+            && (accountForm.get('password').touched || accountForm.get('password').dirty)"
+                   class="text-red">Password must be at least 6 characters</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Confirm Password</ion-label>
+            <ion-input formControlName="confirmPassword" type="password" placeholder="*******"></ion-input>
+            <small *ngIf="accountForm.get('confirmPassword').invalid
+            && (accountForm.get('confirmPassword').touched || accountForm.get('confirmPassword').dirty)"
+                   class="text-red">Passwords do not match</small>
+          </ion-item>
+        </section>
+
+        <section class="pt-3 px-4">
+          <ion-button [disabled]="isLoading" (click)="submit()" expand="full">Create Account</ion-button>
+          <p class="py-2">
+            <span>Have an account?</span><span routerLink="/auth/login" class="px-2  text-primary">Login</span>
+<!--            <ion-button routerLink="/auth/login" color="secondary" expand="full">Login</ion-button>-->
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</ion-content>

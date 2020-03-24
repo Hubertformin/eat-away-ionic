@@ -1,0 +1,72 @@
+<ion-header>
+  <section id="toolbar" class="ion-padding">
+    <div class="title-box" style="justify-content: flex-start;">
+      <ion-buttons slot="start">
+        <ion-back-button text="" style="color: #333;" icon="arrow-back-outline" defaultHref="/tabs/home"></ion-back-button>
+      </ion-buttons>
+      <h4 class="title-text ml-3 font-pacifico">{{appName}}</h4>
+      <!--      <span class="icon"><ion-icon name="notifications"></ion-icon></span>-->
+    </div>
+    <div class="">
+      <h1 class="mt-3 font-bold">Checkout</h1>
+    </div>
+  </section>
+</ion-header>
+<ion-content>
+  <section class="body pt-4">
+    <section class="items-card">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Order summary</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <section class="body">
+            <section *ngFor="let cart of cartItems" >
+              <ion-row>
+                <ion-col size="7">
+                  <p class="text-wrap">{{cart.name}}</p>
+                </ion-col>
+                <ion-col size="2">
+                  <p class="text-wrap">{{cart.quantity}}</p>
+                </ion-col>
+                <ion-col size="3">
+                  <p class="text-wrap"><strong>{{cart.totalAmount | number}}</strong></p>
+                </ion-col>
+              </ion-row>
+            </section>
+          </section>
+          <section class="footer pt-4 border-t text-right px-4">
+            <h4><strong>Sub-total: {{cartService.getTotalAmount() | localeCurrency}}</strong></h4>
+          </section>
+        </ion-card-content>
+      </ion-card>
+    </section>
+    <section class="payment-card mt-4">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Payment and Delivery</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <section class="">
+            <ion-row>
+              <ion-col size="8">
+                <p class="text-wrap">Delivery fees</p>
+              </ion-col>
+              <ion-col size="4">
+                <p class="text-wrap">{{1000 | localeCurrency}}</p>
+              </ion-col>
+            </ion-row>
+            <h4><ion-icon name="card"></ion-icon>&nbsp;Payment on delivery</h4>
+            <div class="total-amount my-3 py-2 text-right">
+              <h1><strong>Total: {{(cartService.getTotalAmount() + 1000) | localeCurrency}}</strong></h1>
+            </div>
+          </section>
+        </ion-card-content>
+      </ion-card>
+      <!-- complete button, place order-->
+      <section class="pt-3 pb-4 px-3">
+        <ion-button (click)="saveOrder()" expand="full">Place order</ion-button>
+      </section>
+    </section>
+  </section>
+</ion-content>

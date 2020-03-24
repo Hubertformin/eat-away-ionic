@@ -1,0 +1,48 @@
+<ion-header>
+  <section id="toolbar" style="border-radius: 0;" class="ion-padding">
+    <div class="title-box" style="justify-content: flex-start;">
+      <ion-buttons slot="start">
+        <ion-back-button text="" style="color: #333;" icon="arrow-back-outline" defaultHref="/tabs/home"></ion-back-button>
+      </ion-buttons>
+      <h4 class="title-text ml-3 font-pacifico">{{appName}}</h4>
+      <!--      <span class="icon"><ion-icon name="notifications"></ion-icon></span>-->
+    </div>
+    <div class="mt-3">
+      <h1 class="mt-3 font-bold">Profile</h1>
+    </div>
+  </section>
+</ion-header>
+
+<ion-content>
+  <section *ngIf="currentUser" class="header h-32 flex justify-center" style="align-items: center;flex-direction: column;">
+<!--    <p class="text-3xl"><ion-icon name="person-circle"></ion-icon></p>-->
+    <h1 class="mb-2">{{currentUser.name | titlecase}}</h1>
+    <p class="mt-0" *ngIf="currentUser.email"><small>{{currentUser.email}}</small></p>
+  </section>
+
+  <section *ngIf="currentUser" [formGroup]="accountForm" class="form pr-4 pb-3 pt-6">
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone number</ion-label>
+      <ion-input formControlName="phoneNumber" type="tel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Date of birth</ion-label>
+      <ion-input formControlName="dateOfBirth" type="date"></ion-input>
+    </ion-item>
+  </section>
+</ion-content>
+
+<ion-footer *ngIf="accountForm.touched">
+  <ion-button (click)="onSaveForm()" expand="full">Save</ion-button>
+</ion-footer>

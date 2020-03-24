@@ -1,0 +1,69 @@
+<ion-header>
+  <section id="toolbar" class="ion-padding">
+    <div class="title-box">
+      <h4 class="title-text font-pacifico">{{appName}}</h4>
+      <!--      <span class="icon"><ion-icon name="notifications"></ion-icon></span>-->
+    </div>
+    <div class="search-container">
+      <div class="icon-box">
+        <ion-icon name="search"></ion-icon>
+      </div>
+      <input type="search" [(ngModel)]="searchVal" (keyup.enter)="search($event)" placeholder="Search item..." name="" id="searchInput" />
+      <div *ngIf="searchVal" (click)="searchVal = ''" class="cancel-icon">
+        <ion-icon name="close-circle"></ion-icon>
+      </div>
+    </div>
+  </section>
+</ion-header>
+<ion-content (ionScrollStart)="onContentScroll($event)">
+  <section class="body">
+    <p class="text-grey-dark my-0 px-8 pt-6"><small>Recent Items</small></p>
+    <div class="rect-tabs pt-3">
+      <div *ngFor="let item of recentItems" [ngStyle]="{background: 'url(' + item.imageUrl+ ')'}" class="card inline-block bg-yellow-dark ml-3 mr-3">
+        <div class="text-container p-3 text-white">
+          <h3 class="my-0 text-wrap">{{item.name}}</h3>
+          <span>{{item.unitPrice | localeCurrency}}</span>
+          <span *ngIf="!cartService.isAddedToCart(item.id)"><ion-button (click)="addToCart(item)" color="primary" size="small">Add to cart</ion-button></span>
+          <span *ngIf="cartService.isAddedToCart(item.id)"><ion-button (click)="cartService.remove(item)" color="success" size="small">Added</ion-button></span>
+        </div>
+      </div>
+    </div>
+    <!--    -->
+    <section class="pt-4 pb-3">
+      <div class="header border border-b px-4 py-1">
+        <strong><span>Available items</span></strong>
+      </div>
+      <ion-virtual-scroll [items]="items" approxItemHeight="72px">
+        <ion-item *virtualItem="let item">
+          <ion-thumbnail>
+            <ion-img *ngIf="item.imageUrl" style="border-radius: 50%;" [src]="item.imageUrl"></ion-img>
+            <div *ngIf="!item.imageUrl" style="background: grey;height: 56px;width: 56px;border-radius: 50%;"></div>
+          </ion-thumbnail>
+          <ion-label>
+            <ion-row>
+              <ion-col size="9">
+                <div>
+                  <h2 class="text-wrap">{{item.name}}</h2>
+                  <h3 class="text-yellow-darker">{{item.unitPrice | localeCurrency}}</h3>
+                </div>
+              </ion-col>
+              <ion-col size="3">
+                <div class="relative">
+                  <button *ngIf="!cartService.isAddedToCart(item.id)" (click)="addToCart(item)"
+                          class="text-yellow-darker"
+                          style="font-size: 30px;background: transparent;">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </button>
+                  <button *ngIf="cartService.isAddedToCart(item.id)" (click)="cartService.remove(item)" class="text-red"
+                          style="font-size: 30px;background: transparent;">
+                    <ion-icon name="remove-circle-outline"></ion-icon>
+                  </button>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-label>
+        </ion-item>
+      </ion-virtual-scroll>
+    </section>
+  </section>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <section id="toolbar" class="ion-padding">
+    <div class="title-box" style="justify-content: flex-start;">
+      <ion-buttons slot="start">
+        <ion-back-button text="" style="color: #333;position: absolute;top: -9px;left: -8px;" icon="arrow-back-outline" defaultHref="/tabs/home"></ion-back-button>
+      </ion-buttons>
+      <h4 class="title-text ml-10 font-pacifico">{{appName}}</h4>
+      <!--      <span class="icon"><ion-icon name="notifications"></ion-icon></span>-->
+    </div>
+    <div class="search-container">
+      <div class="icon-box">
+        <ion-icon name="search"></ion-icon>
+      </div>
+      <input type="search" [(ngModel)]="searchQuery" (keyup.enter)="search()" placeholder="Search item..." name="" id="searchInput" />
+      <div *ngIf="searchQuery" (click)="searchQuery = ''" class="cancel-icon">
+        <ion-icon name="close-circle"></ion-icon>
+      </div>
+    </div>
+  </section>
+</ion-header>
+<ion-content>
+  <div class="page ion-padding-top px-2 h-full">
+    <ion-list *ngIf="itemResultsMeta && itemResultsMeta.hits.length > 0">
+      <ion-list-header>
+        <h5><strong>({{itemResultsMeta.nbHits | number}}) results</strong></h5>
+      </ion-list-header>
+      <ion-item *ngFor="let item of itemResultsMeta.hits">
+        <ion-thumbnail>
+          <ion-img *ngIf="item.imageUrl" style="border-radius: 50%;" [src]="item.imageUrl"></ion-img>
+          <div *ngIf="!item.imageUrl" style="background: grey;height: 56px;width: 56px;border-radius: 50%;"></div>
+        </ion-thumbnail>
+        <ion-label>
+          <ion-row>
+            <ion-col size="9">
+              <div>
+                <h2 class="text-wrap">{{item.name}}</h2>
+                <h3 class="text-yellow-darker">{{item.unitPrice | localeCurrency}}</h3>
+              </div>
+            </ion-col>
+            <ion-col size="3">
+              <div class="relative">
+                <button *ngIf="!cartService.isAddedToCart(item.id)" (click)="addToCart(item)"
+                        class="text-yellow-darker"
+                        style="font-size: 30px;background: transparent;">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </button>
+                <button *ngIf="cartService.isAddedToCart(item.id)" (click)="cartService.remove(item)" class="text-red"
+                        style="font-size: 30px;background: transparent;">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                </button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+<!--    show placholder-->
+    <div *ngIf="itemResultsMeta && itemResultsMeta.hits.length === 0" class="self-center">
+      <h1 class="text-center m-0" style="font-size: 51px;"><ion-icon name="file-tray-outline"></ion-icon></h1>
+      <h3 class="text-center m-0">No results</h3>
+    </div>
+  </div>
+</ion-content>
+<app-error-page [error]="showErrorPage"></app-error-page>

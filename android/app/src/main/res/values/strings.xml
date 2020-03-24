@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">eat-away</string>
+    <string name="title_activity_main">eat-away</string>
+    <string name="package_name">com.eataway.snap</string>
+    <string name="custom_url_scheme">com.eataway.snap</string>
+</resources>

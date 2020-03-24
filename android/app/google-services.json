@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "466602074889",
+    "firebase_url": "https://go-eat-away.firebaseio.com",
+    "project_id": "go-eat-away",
+    "storage_bucket": "go-eat-away.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466602074889:android:e604c5b8bba269c74d69d8",
+        "android_client_info": {
+          "package_name": "com.eataway.snap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466602074889-j63m7isa5odst92dnci07037n1o6vtbn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eataway.snap",
+            "certificate_hash": "3a429ecd29a749b2c62502008a6f2bf1b9416600"
+          }
+        },
+        {
+          "client_id": "466602074889-v6tl1mejevndpnq7pb07h9q1107i7h7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAOT8KPv9ZVSExzpf0JBcy2Zns6Di9Fvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466602074889-v6tl1mejevndpnq7pb07h9q1107i7h7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

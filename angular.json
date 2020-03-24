@@ -36,6 +36,12 @@
                 "input": "src/theme/variables.scss"
               },
               {
+                "input": "src/theme/fonts.scss"
+              },
+              {
+                "input": "src/assets/lib/lib.css"
+              },
+              {
                 "input": "src/global.scss"
               }
             ],
