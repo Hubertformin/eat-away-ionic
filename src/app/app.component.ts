@@ -26,7 +26,8 @@ export class AppComponent {
     private storageService: StorageService,
     private db: DbService
   ) {
-    this.initializeApp();
+      /// TODO: Uncomment initialize app
+      // this.initializeApp();
   }
 
   initializeApp() {

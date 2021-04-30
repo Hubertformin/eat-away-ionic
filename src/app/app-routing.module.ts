@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./screens/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'get-started',
-    loadChildren: () => import('./slides/slides.module').then(m => m.SlidesModule)
+    loadChildren: () => import('./screens/slides/slides.module').then(m => m.SlidesModule)
   }
 ];
 @NgModule({

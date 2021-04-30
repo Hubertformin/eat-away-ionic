@@ -1,0 +1,53 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+#header {
+  background: url("../../../assets/images/burger.jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+  height: 250px;
+  .wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    h1, h2, h3, h4, h5, h6, p {
+      color: white;
+    }
+
+  }
+}
+
+.rect-tabs {
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.card {
+  height: 150px;
+  width: 180px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 15px;
+  .text-container {
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    left: 0;
+    right: 0;
+  }
+}

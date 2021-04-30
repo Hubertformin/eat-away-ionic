@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../home/home.module').then(m => m.HomeModule)
+              import('../screens/home/home.module').then(m => m.HomeModule)
           }
         ]
       },
@@ -23,7 +23,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../orders/orders.module').then(m => m.OrdersModule)
+              import('../screens/orders/orders.module').then(m => m.OrdersModule)
           }
         ]
       },
@@ -33,7 +33,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../cart/cart.module').then(m => m.CartModule)
+              import('../screens/cart/cart.module').then(m => m.CartModule)
           }
         ]
       },
@@ -43,7 +43,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-                import('../profile/profile.module').then(m => m.ProfileModule)
+                import('../screens/profile/profile.module').then(m => m.ProfileModule)
           }
         ]
       },

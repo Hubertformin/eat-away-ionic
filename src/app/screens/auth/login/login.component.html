@@ -1,0 +1,35 @@
+<section class="bg w-full h-full">
+ <div class="absolute-fill">
+     <form [formGroup]="accountForm" (ngSubmit)="loginUser()" class="Form self-center w-full">
+         <section class="icon text-center pb-4">
+             <img src="../../../../assets/images/icon.png" height="75" width="75" alt="">
+             <p style="font-size: 22px;" class="m-0 mt-2 font-pacifico text-primary">Eat Away</p>
+         </section>
+         <section class="form-body px-4">
+             <ion-item>
+                 <ion-label position="stacked">Email</ion-label>
+                 <ion-input type="email" formControlName="email" placeholder="Email or phone number"></ion-input>
+                 <small *ngIf="accountForm.get('email').invalid
+                        && (accountForm.get('email').touched)"
+                        class="text-red">Please insert a valid email</small>
+             </ion-item>
+
+             <ion-item>
+                 <ion-label position="stacked">Password</ion-label>
+                 <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+                 <small *ngIf="accountForm.get('password').invalid
+                        && (accountForm.get('password').touched || accountForm.get('password').dirty)"
+                        class="text-red">Password is required</small>
+             </ion-item>
+         </section>
+
+         <section class="pt-3 px-4">
+             <ion-button [disabled]="isLoading" type="submit"  expand="full">Login</ion-button>
+             <p class="">
+<!--                 <span class="text-white px-3 py-1 block">Or</span>-->
+                 <ion-button routerLink="/auth/create-account" expand="full" color="secondary">Create account</ion-button>
+             </p>
+         </section>
+     </form>
+ </div>
+</section>
